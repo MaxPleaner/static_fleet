@@ -65,7 +65,8 @@ _note_: to be clear, when I say "sass", I mean the `.sass` extension and syntax,
   - Click the name of the site you want to deploy from the "Sites list" section
   - Click build.
   - Click deploy.
-  - Visit the website at `http://MY_CUSTOM_SITENAME.s3-website-us-west-1.amazonaws.com`
+  - Visit the website at `http://MY_CUSTOM_SITENAME.s3-website-us-east-1.amazonaws.com`
+  - _note on `AWS_REGION`: S3 currently does not support region-specific buckets. So if you change the value in `.env` to _not_ be `us-east-1`, I can't confirm things will work (I haven't tried).
 7. Use the "scripts" section
   - this allows writing arbitrary ruby scripts, saving them to the database as strings, and invoking them when called upon.
   - The `@data` instance variable can be considered the "return value" of a script, and after a script is run, its value will be displayed. The `@data`  value will be passed along to subsequently run scripts

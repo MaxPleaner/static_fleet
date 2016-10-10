@@ -1,20 +1,25 @@
+require 'pry'
 
 # An instance of the aws s3 sdk class
-AWS_S3 = Aws::S3::Client.new
+AWS_S3 = Aws::S3::Client.new(signature_version: 'v4')
 
 # custom helper methods to interact with AWS S3
 class AWS_Helpers
   def self.create_bucket(bucketname)
     bucketname = sanitize_bucketname(bucketname)
-    bucket = AWS_S3.create_bucket(
+    bucket_options = {
       bucket: bucketname,
       acl: "public-read",
-      create_bucket_configuration: {
+    }
+    # this fixes a bug with AWS cli (see https://github.com/boto/boto3/issues/125)
+    if ENV["AWS_REGION"] != 'us-east-1'
+      bucket_options.merge! create_bucket_configuration: {
         location_constraint: ENV["AWS_REGION"]
       }
-    )
-    bucket
+    end
+    AWS_S3.create_bucket(bucket_options)
   end
+
 
   def self.delete_bucket(bucketname)
     bucketname = sanitize_bucketname(bucketname)

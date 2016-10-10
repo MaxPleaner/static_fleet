@@ -88,7 +88,7 @@ class StaticSite
     sitename = options[:sitename]
     AWS_Helpers.deploy_site(sitename)
     { flash: {
-      msg: "Deployed site to http://#{sitename}.s3-website-us-west-1.amazonaws.com/"
+      msg: "Deployed site to http://#{sitename}.s3-website-us-east-1.amazonaws.com/"
     } }
   end
   
