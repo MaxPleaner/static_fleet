@@ -72,7 +72,7 @@ class Gen
       dest_path = path.gsub("source/", "dist/")
       dest_folder = dest_path.split("/")[0..-2].join("/")
       `mkdir -p #{dest_folder}`
-      `mv "#{path}" "#{dest_path}"`
+      `cp "#{path}" "#{dest_path}"`
     end
   end
   

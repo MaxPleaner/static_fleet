@@ -4,6 +4,5 @@ div.grid
     div.grid-item
       = file_title(file)
       hr
-      div.metadata = file_metadata.to_h.to_json
       div.content
         == file_html

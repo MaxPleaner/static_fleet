@@ -17,7 +17,7 @@ module Helpers
   # Processes a markdown file, including nesting other md files
   # and creating a tags list from the metadata of the included files
   # returns an array: [result_html, tags]
-  def process_md_erb(filename) # => html string
+  def process_md_erb(filename)
     renderer = Redcarpet::Render::HTML
     markdown ||= Redcarpet::Markdown.new(renderer, md_extensions)
     concatenated_md = embed_md_erb(filename)
@@ -38,6 +38,7 @@ module Helpers
   # Returns an Array: [result md, metadata hash]
   def extract_metadata(markdown_string)
     metadata_results = OpenStruct.new
+    return markdown_string unless markdown_string.include? "**METADATA**"
     result = markdown_string.split("**METADATA**").map do |section|
       metadata, content = section.split("****")
       parse_metadata_section(section).each do |key,results_array|
