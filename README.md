@@ -38,6 +38,7 @@ _note_: to be clear, when I say "sass", I mean the `.sass` extension and syntax,
 3. Run `bundle install`. You might have to install some system dependencies for this to succeed.
 4. Install `awscli` using `pip`. Run `aws configure` and enter your credentials and region.
   - _note_ you should be using credentials for an IAM user with an administrator role, not the master AWS account
+5. add a line `signature_version = s3v4` to `~/.aws/config`. You can see `aws_config.example` as a template.
 5. Install `rsync` and `unzip`, which are used to upload / deploy generic static sites
 5. Rename [.env.example](./.env.example) to `.env`. Edit the file with the following env vars:
   - `AWS_ACCESS_TOKEN_ID`
