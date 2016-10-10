@@ -1,0 +1,81 @@
+h4.indented-header[toggles='#sites-list'] Sites list
+br
+
+- if @sites.is_a?(Array) && @sites.any?
+  div.greybox#sites-list
+    - @sites.each do |site|
+      div.griditem.site-link
+        form action='/' method="GET"
+          input type='hidden' name='get_site'
+          input type='hidden' name='sitename' value=site
+          input type='submit' value=site
+
+div.clearfix
+h4.indented-header[toggles='#create-site'] Create site
+br
+
+div#create-site
+  div.greybox
+    span.indented-header toggles='#with-static-framework'
+     | with static framework
+    form#with-static-framework action='/' method="GET"
+      input type='hidden' name='create_site'
+      input type='text' name='sitename' placeholder='enter name'
+      br
+      input type='submit' value='create site using static framework'
+      br
+      i
+       == "Create a site using the <a href='http://github.com/maxpleaner/static'>static</a> framework. "
+       | In this framework, content is provides through Markdown pages that are categorized by 'tags'.
+       |  The UI displays these pages as togglable sections in a grid that is filterable by tag.
+  br
+  
+  div.clearfix
+  div.greybox
+    span.indented-header toggles='#with-custom-zip'
+     | from .zip archive
+    br
+    form#with-custom-zip action='/upload_generic_site' method="POST" enctype='multipart/form-data'
+      input type='text' name='sitename' placeholder='enter name'
+      br
+      input type='file' name='file'
+      br
+      input type='submit' value='upload generic static site'
+      br
+      i Expects a zip file containing a vanilla css, js, and html site. No precompilation will occur
+  br
+  div.clearfix
+  
+  div.greybox
+    span.indented-header toggles='#with-empty-dir'
+     | with empty dir
+    form#with-empty-dir action='/' method="GET"
+      input type='hidden' name='build_empty_site'
+      input type='text' name='sitename' placeholder='enter name'
+      br
+      input type='submit' value='create empty site'
+      br
+      i Plain html, css, and javascript - no compilation. Configures a corresponding S3 bucket
+  br
+  div.clearfix
+
+  div.greybox
+    span.indented-header toggles='#with-genrb'
+     | with genrb
+    form#with-genrb action='/' method="GET"
+      input type='hidden' name='build_empty_site_with_genrb'
+      input type='text' name='sitename' placeholder='enter name'
+      br
+      input type='submit' value='create empty site with genrb framework'
+      br
+      i == "the underlying compilation/build system used by <a href='http://github.com/maxpleaner/static'>static</a> "
+      br
+      i Write .slim, .coffee, and .sass files anywhere in the source/ tree and they will be compiled to dist/
+      br
+      i == "See <a href='http://github.com/maxpleaner/genrb'>genrb</a> for more info"
+      br
+      i Configures a corresponding S3 bucket
+  br
+
+- if (current_site = session[:current_site])
+  == slim :"subpages/current_site"

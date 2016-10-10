@@ -1,0 +1,2 @@
+- build arbitrary static directory
+- replace sinatra assetpack gem

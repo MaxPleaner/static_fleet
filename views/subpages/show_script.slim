@@ -1,0 +1,25 @@
+h4.indented-header[toggles='#selected-script'] = "Selected script"
+br
+
+div.box#selected-script
+  h4 = "#{@script.category} script #{@script.name}"
+  br
+  form action='/' method="GET"
+    input type='hidden' name='run_script'
+    input type='hidden' name='id' value=@script.id
+    input class='run-btn' type='submit' value='run'
+  form action="/" method="GET"
+    input type='hidden' name='delete_script'
+    input type='hidden' name='id' value=@script.id
+    input class='delete-btn' type='submit' onclick='return confirm("are you sure")' value='delete'
+  form action="/" method="GET"
+    input type='hidden' name='update_script'
+    input type='hidden' name='id' value=@script.id
+    input type='text' name='name' value=@script.name
+    br
+    textarea name='content' rows='3'
+      = @script.content
+    br
+    input type='submit' value='update'
+
+

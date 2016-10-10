@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    == js :app
+    == css :application
+    title Static Fleet
+
+  body
+
+    == yield
+
+    javascript:
+
+      $(function(){
+
+        gridStartup(".grid", ".box")
+        window.currentPage = registerCurrentPage(window.location.search)
+        allowTextareaResizingInGrid($(".grid"))
+        initTogglers()
+
+        // on every page load, set the url to '/' but don't actually reload the page
+        // this is so the refresh button can be idempotent
+        history.pushState(null, null, "/");
+
+        console.log(window.currentPage)
+
+        routeFromCurrentPage(window.currentPage)
+
+      })

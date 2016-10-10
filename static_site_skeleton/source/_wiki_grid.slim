@@ -1,0 +1,9 @@
+div.grid
+  - md_erb_files.each do |file|
+    - file_html, file_metadata = process_md_erb(file)
+    div.grid-item
+      = file_title(file)
+      hr
+      div.metadata = file_metadata.to_h.to_json
+      div.content
+        == file_html

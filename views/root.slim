@@ -1,0 +1,36 @@
+- if flash[:msg]
+  - msg = flash[:msg]
+  - flash[:msg] = nil
+  div.grid#flash-messages
+    div.box
+      h4
+        code message
+      pre = msg.ai(html: true)
+  div.clearfix
+
+h4.indented-header[toggles='#list-scripts'] Scripts
+div.grid#list-scripts
+  == slim :"subpages/list_scripts"
+div.clearfix
+
+h4.indented-header[toggles='#create-scripts'] Create script
+div.grid#create-scripts
+  == slim :"subpages/create_script_forms"
+div.clearfix
+
+
+- if @script&.id
+  div.major-section
+    div.grid#show-script
+      == slim :"subpages/show_script"
+    div.clearfix
+
+- if session[:data]
+  div.major-section
+    div.grid#data-results
+      == slim :"subpages/data_results"
+    div.clearfix
+
+div.grid#sites
+  == slim :"subpages/sites"
+div.clearfix

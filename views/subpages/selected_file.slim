@@ -1,0 +1,9 @@
+- selected_file = session[:selected_file]
+h4 = selected_file[:path]
+form action="/" method="GET"
+  input type='hidden' name='update_file'
+  input type='hidden' name='path' value=selected_file[:path]
+  textarea.edit-file name='text' rows='15'
+    = selected_file[:text]
+  br
+  input type='submit' value='update file'

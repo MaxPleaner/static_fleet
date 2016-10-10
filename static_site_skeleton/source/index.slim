@@ -1,0 +1,25 @@
+doctype html
+html
+
+  head
+
+    title static
+    link rel='stylesheet' href='./styles/app.css'
+    link rel='stylesheet' href='./styles/pace.css'
+    script src='./scripts/jquery-3.1.0.min.js'
+    script src='./scripts/pace.min.js'
+    script src='./scripts/isotope.min.js'
+    script src='./scripts/curry.min.js'
+    script src='./scripts/app.js'
+
+  body
+
+    div#intro
+      h4 Welcome to the app
+      h5
+        a href='http://github.com/maxpleaner/static'
+          | project source
+      
+    container#all-content
+      == render("_nav.slim")
+      == render("_wiki_grid.slim")

@@ -1,0 +1,4 @@
+static_sites/**/*
+.env
+aws-config
+lib/database/database.sqlite

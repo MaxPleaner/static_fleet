@@ -1,0 +1,232 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  box-shadow: 0 0 10px grey;
+  border: 1px solid grey;
+  margin: 10px;
+  display: inline-block;
+  padding: 20px;
+  background-color: rgb(100, 100, 100);
+  float: left;
+}
+
+body{
+  background-color: rgb(150,150,150);
+  min-width: 350px;
+}
+
+body, html {
+  min-height: 1000px;
+}
+textarea, input {
+  background-color: lightgrey;
+  width: 200px;
+  margin: 5px;
+}
+
+input[type='submit'] {
+  margin-top: 0px;
+}
+
+* {
+  white-space: normal;
+}
+
+input[type='submit']:hover {
+  /*text-shadow: 0 0 1px black;*/
+}
+
+input[type="text"], input[type='submit'] {
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+}
+input, textarea {
+  transition: box-shadow 0.3s, border 0.3s;
+  letter-spacing: 1px !important;
+}
+input:hover {
+  cursor: pointer;
+}
+input[type="text"]:focus,
+input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+  cursor: text;
+}
+
+textarea {
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+}
+input:hover, textarea:hover {
+  box-shadow: 0 0 2px yellow;
+  cursor: pointer;
+}
+textarea:focus,
+textarea.focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+  cursor: text;
+}
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    rgba(0,160,0, 1);
+    letter-spacing: 1px;
+    text-align: center;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    rgba(0,160,0, 1);
+   letter-spacing: 1px;
+   text-align: center;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    rgba(0,160,0, 1);
+   letter-spacing: 1px;
+   text-align: center;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    rgba(0,160,0, 1);
+   letter-spacing: 1px;
+   text-align: center;
+}
+
+.block {
+  display: block;
+}
+
+#create-scripts {
+  
+}
+#list-scripts {
+  
+}
+#list-scripts .box {
+  width: 250px;
+}
+#show-script {
+  
+}
+
+.clearfix {
+  clear: both;
+}
+
+.run-btn {
+  border: 1px solid green !important;
+}
+
+.delete-btn {
+  border: 1px solid darkred !important;
+}
+
+.file {
+  display: inline-block;
+}
+
+.directory {
+  display: inline-block;
+}
+
+.directory .site-index-entry {
+  border: 1px solid darkblue;
+}
+
+.site-index-entry {
+  border: 1px solid darkgreen;
+  width: auto;
+  display: inline-block;
+}
+
+.edit-file {
+  width: 80%;
+}
+
+.site-page-action, .greybox {
+  padding: 10px;
+  display: inline-block;
+  float: left;
+  background-color: rgba(10, 10, 100, .1);
+  margin: 10px;
+  box-shadow: 0 0 10px grey;
+}
+
+.filepath {
+  display: inline-block;
+  padding: 10px;
+  background-color: rgba(190, 190, 255, .9);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+
+.major-section {
+  /*background-color: rgba(190, 80, 45, .3);*/
+  /*margin: 20px;*/
+  /*display: inline-block;*/
+  /*text-align: center;*/
+  /*padding: 10px;*/
+}
+
+.indented-header {
+  margin: 10px;
+  display: inline-block;
+  width: auto;
+  box-shadow: 0 0 20px purple;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 5px;
+  font-style: italic;
+  background-color: rgba(80,150,255, .3);
+}
+
+/* Hacky way to override Awesome Print's default color for strings */
+kbd[style='color:brown'] {
+  color: black !important;
+}
+
+#flash-messages {
+  width: 100%;
+}
+
+.pull-left {
+  text-align: left;
+}
+
+
+.site-link {
+  display: inline-block;
+}
+
+.new-site-form {
+
+}
+
+.indented-header[toggles] {
+  cursor: pointer;
+  transition: box-shadow .2s ease-in;
+}
+
+.indented-header[toggles]:hover {
+  box-shadow: 0 0 10px darkred;
+}
+
+.toggled-close {
+  display: none;
+}
+
+.toggled-open {
+  margin: 50px;
+}
+
+.indented-header {
+  margin-top: 50px;
+}

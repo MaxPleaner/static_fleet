@@ -1,0 +1,29 @@
+div.box
+    h4 data scripts
+    == "<i>None yet</i>" if @data_scripts.none?
+    - @data_scripts.each do |script|
+      form action="/" method="GET"
+        input type='hidden' name='show_script'
+        input type='hidden' name='id' value=script.id
+        input type='submit' value=script.name
+    br
+
+div.box
+    h4 page scripts
+    == "<i>None yet</i>" if @page_scripts.none?
+    - @page_scripts.each do |script|
+      form action="/" method="GET"
+        input type='hidden' name='show_script'
+        input type='hidden' name='id' value=script.id
+        input type='submit' value=script.name
+    br
+
+div.box
+    h4 arbitrary scripts
+    == "<i>None yet</i>" if @arbitrary_scripts.none?
+    - @arbitrary_scripts.each do |script|
+      form action="/" method="GET"
+        input type='hidden' name='show_script'
+        input type='hidden' name='id' value=script.id
+        input type='submit' value=script.name
+    br

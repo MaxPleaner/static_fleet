@@ -1,0 +1,29 @@
+
+- data = session[:data]
+- last_run_script = session[:last_run_script] || OpenStruct.new
+
+h4.indented-header[toggles='#last-run-script'] last run script
+br
+div.box#last-run-script
+  form action='/' method='GET'
+    input type='hidden' name='run_script'
+    input type='hidden' name='id' value=last_run_script.id
+    input type='submit' value='rerun'
+  ul
+    li = "category: #{last_run_script.category}"
+    li = "name: #{last_run_script.name}"
+  == "data is class #{data.class}<br>"
+  - if data.class == Array
+    == "data length is #{data.length}<br>"
+    == "data is composed of classes: #{data.map(&:class).uniq.join(", ")}<br>"
+    == "data first element is #{data[0]}"
+  - if data.class == String
+    == "data length is #{data.length}<br>"
+    == "data full string is #{data}"
+  - if data.class == Hash
+    == "data keys length is #{data.keys.length}<br>"
+    == "data key classes are #{data.keys.map(&:class).uniq.join(", ")}<br>"
+    == "data value classes are #{data.values.map(&:class).uniq.join(", ")}"
+  div
+    = "data-dump: "
+    pre == data.is_a?(String) ? data.gsub(", ", "<br>") : data.ai(html: true)

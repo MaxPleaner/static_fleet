@@ -1,0 +1,109 @@
+- current_site = session[:current_site]
+
+div.clearfix
+
+h4.indented-header[toggles='#current-site'] == "Current site: #{current_site[:sitename]}"
+br
+
+div#current-site
+
+  span.indented-header[toggles='#delete-site']
+   | delete site
+  div#delete-site
+    form action='/' method="GET"
+      input type='hidden' name='delete_site'
+      input type='hidden' name='sitename' value=current_site[:sitename]
+      input type='submit' value='are you sure?'
+  br
+
+  div.clearfix
+
+  span.indented-header[toggles='#add-remove-files']
+   | add/remove files
+  div#add-remove-files
+    form.site-page-action action="/" method="GET"
+      input type='hidden' name='add_page'
+      input type='hidden' name='sitename' value=current_site[:sitename]
+      span.filepath = "./static_sites/#{current_site[:sitename]}/source/"
+      input type='text' name='path' placeholder='enter filename'
+      br
+      input type='submit' value='add file/dir'
+      br
+      i new directories will be created automatically
+    br
+    
+    div.clearfix
+
+    form.site-page-action action="/upload_file" method="POST" enctype='multipart/form-data'
+      input type='hidden' name='sitename' value=current_site[:sitename]
+      input type='file' name='file'
+      br
+      span.filepath = "./static_sites/#{current_site[:sitename]}/source/"
+      input type='text' name='path' placeholder='enter filename'
+      br
+      input type='submit' value='upload file'
+      br
+      i new directories will be created automatically
+    br
+
+    div.clearfix
+    
+    form.site-page-action action='/' method="GET"
+      input type='hidden' name='remove_page'
+      input type='hidden' name='sitename' value=current_site[:sitename]
+      span.filepath = "./static_sites/#{current_site[:sitename]}/source/"
+      input type='text' name='path' placeholder='enter file or dir name'
+      br
+      input type='submit' value='remove file/dir'
+    br
+
+  div.clearfix
+
+  div.greybox
+    form action='/' method="GET"
+      input type='hidden' name='build_site'
+      input type='hidden' name='sitename' value=current_site[:sitename]
+      input type='submit' value='build'
+    br
+  
+    form action="/" method="GET"
+      input type='hidden' name='deploy_site'
+      input type='hidden' name='sitename' value=current_site[:sitename]
+      input type='submit' value='deploy'
+    br
+  div.clearfix
+
+  
+  div.clearfix
+  div.greybox
+    container#current-site-dir.grid
+      b files
+      br
+      br
+      - current_site[:files].each do |file|
+        div class= ((File.file?(file) ? "file" : "directory") + " grid-item")
+          form action='/' method="GET"
+            input type='hidden' name='get_file_or_dir'
+            input type='hidden' name='path' value=file
+            input class='site-index-entry' type='submit' value=file
+      br
+  br
+  
+  div.clearfix
+ 
+  
+  - if (selected_dir = session[:selected_dir])
+      div.grid#selected-dir
+        == slim :"subpages/selected_dir"
+      div.clearfix
+      br
+      br
+  - if (selected_file = session[:selected_file])
+      div.grid-item#selected-file
+        == slim :"subpages/selected_file"
+      div.clearfix
+      br
+      br
+
+
+  

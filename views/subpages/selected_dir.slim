@@ -1,0 +1,9 @@
+- selected_dir = session[:selected_dir]
+h4 = selected_dir[:path]
+div.grid
+- selected_dir[:files].each do |file|
+  div class= ((File.file?(file) ? "file" : "directory") + " grid-item")
+    form action='/' method="GET"
+      input type='hidden' name='get_file_or_dir'
+      input type='hidden' name='path' value=file
+      input class='site-index-entry' type='submit' value=file

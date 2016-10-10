@@ -1,0 +1,41 @@
+
+span The <code>@data</code> instance variable can be considered the "return value" of a script.
+br
+span It's value will be displayed when the script is run.
+br
+span It will also be made available to subsequently run scripts.
+br
+
+div.box.griditem
+  div.greybox
+    form action="/" method="GET"
+      input type='hidden' name='create_script'
+      input type='hidden' name='category' value='data'
+      input type='text' name='name' placeholder='enter name'
+      br
+      textarea name='content' placeholder='enter content' rows='3'
+      br
+      input type="submit" value="create data script"
+
+div.box.griditem
+  div.greybox
+    form action="/" method="GET"
+      input type='hidden' name='create_script'
+      input type='hidden' name='category' value='page'
+      input type='text' name='name' placeholder='enter name'
+      br
+      textarea name='content' placeholder='enter content' rows='3'
+      br
+      input type="submit" value="create page script"
+
+div.box.griditem
+  div.greybox
+    form action="/" method="GET"
+      input type='hidden' name='create_script'
+      input type='hidden' name='category' value='arbitrary'
+      input type='text' name='name' placeholder='enter name'
+      br
+      textarea name='content' placeholder='enter content' rows='3'
+      br
+      input type="submit" value="create arbitrary script"
+  
